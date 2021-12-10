@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import tech.devscast.validable.lib.InputContent
 import tech.devscast.validable.lib.validable
 import tech.devscast.validable.ui.theme.ValidableTheme
 
@@ -51,9 +52,11 @@ fun DefaultPreview() {
 
 @Composable
 fun FormSection() {
-    val text by validable {
+    var text by validable(initialValue = "yv", rules = {
         isNotEmpty()
-    }
+    })
+
+
 
     val context = LocalContext.current
 
@@ -64,13 +67,14 @@ fun FormSection() {
                 .padding(20.dp)
                 .align(Alignment.Center),
             value = text.value,
-            onValueChange = { text.value = it },
-            isError = !text.isValid,
+            onValueChange = { text = text.withNewValue(it) },
+            isError = text.errors.isNotEmpty(),
 
             )
         Button(onClick = {
             text.submit {
                 Toast.makeText(context,it,Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,text.errors.isEmpty().toString(),Toast.LENGTH_SHORT).show()
             }
 
         }) {
