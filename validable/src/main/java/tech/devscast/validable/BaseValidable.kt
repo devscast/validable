@@ -16,7 +16,7 @@ open class BaseValidable(
 
     private var displayErrors: Boolean by mutableStateOf(false)
 
-    open val isValid: Boolean
+    val isValid: Boolean
         get() = validator(value)
 
 
@@ -24,10 +24,10 @@ open class BaseValidable(
         displayErrors = true
     }
 
-    fun hasErrors() = !isValid && displayErrors
+    fun hasError() = !isValid && displayErrors
 
     private fun getError(): String? {
-        return if (hasErrors()) {
+        return if (hasError()) {
             errorFor(value)
         } else {
             null
