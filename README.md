@@ -42,15 +42,21 @@ myfield.hasError() // return false if the field is valid, return true if it is n
 for example, you can use it in your TextField like this :
 
 ```kotlin
-TextField(  
-	value = emailField.value,  
-	onValueChange = { emailField.value = it }, // update the text
-	    
-	isError = emailField.hasError(), // check if the field is not valid   
-)  
+@Composable
+fun MyScreen() {
+    
+    val emailField = remember { EmailValidable() }
+    TextField(
+        value = emailField.value,
+        onValueChange = { emailField.value = it }, // update the text
 
-AnimatedVisibility(visible = emailField.hasError() { 
-	TextFieldError(textError = emailField.errorMessage ?: "")  // get the error message ( empty if the field is valid )
+        isError = emailField.hasError(), // check if the field is not valid   
+    )
+
+    AnimatedVisibility(visible = emailField.hasError()) {
+        TextFieldError(textError = emailField.errorMessage ?: "")  // get the error message ( empty if the field is valid )
+    }
+    
 }
 ```
 
@@ -64,8 +70,8 @@ Button(onClick = {
     // pass all fields to the withValidable method
 	withValidable(emailField,nameField) {
 	    
-	// will be executed if all fields are valid
-	Toast.makeText(context,"All fields are valid",Toast.LENGTH_SHORT).show()  
+	    // will be executed if all fields are valid
+	    Toast.makeText(context,"All fields are valid",Toast.LENGTH_SHORT).show()  
 	}  
 }) {  
 	Text(text = "Submit")  
