@@ -2,13 +2,13 @@ package tech.devscast.validable.delegates
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import tech.devscast.validable.NotEmptyValidable
+import tech.devscast.validable.EmailValidable
 import kotlin.properties.ReadOnlyProperty
 
 @Composable
-fun notEmptyValidable() : ReadOnlyProperty<Any?, NotEmptyValidable> {
+fun validableEmail() : ReadOnlyProperty<Any?,EmailValidable> {
     val instance = remember {
-        NotEmptyValidable()
+        EmailValidable()
     }
 
     return ReadOnlyProperty { _, _ ->
