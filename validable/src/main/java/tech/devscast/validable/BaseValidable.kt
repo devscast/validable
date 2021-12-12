@@ -9,24 +9,26 @@ open class BaseValidable(
     private val errorFor: (String) -> String = { "" }
 ) {
 
-    var text: String by mutableStateOf("")
+    var value: String by mutableStateOf("")
+    val errorMessage : String?
+        get() = getError()
 
 
     private var displayErrors: Boolean by mutableStateOf(false)
 
     open val isValid: Boolean
-        get() = validator(text)
+        get() = validator(value)
 
 
     fun enableShowErrors() {
         displayErrors = true
     }
 
-    fun showErrors() = !isValid && displayErrors
+    fun hasErrors() = !isValid && displayErrors
 
-    open fun getError(): String? {
-        return if (showErrors()) {
-            errorFor(text)
+    private fun getError(): String? {
+        return if (hasErrors()) {
+            errorFor(value)
         } else {
             null
         }
