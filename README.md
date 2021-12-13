@@ -66,7 +66,7 @@ allprojects {
 
 ```groovy
 dependencies {
-    implementation 'com.github.devscast:validable:x.y'
+    implementation 'com.github.devscast:validable:x.y.z'
 }
 ```
 
