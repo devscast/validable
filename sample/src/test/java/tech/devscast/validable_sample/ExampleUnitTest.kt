@@ -1,4 +1,4 @@
-package tech.devscast.validable
+package tech.devscast.validable_sample
 
 import org.junit.Test
 

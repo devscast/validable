@@ -1,4 +1,4 @@
-package tech.devscast.validable
+package tech.devscast.validable_sample
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("tech.devscast.validable", appContext.packageName)
+        assertEquals("tech.devscast.validable_sample", appContext.packageName)
     }
 }

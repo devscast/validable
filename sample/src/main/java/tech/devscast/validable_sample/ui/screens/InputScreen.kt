@@ -1,4 +1,4 @@
-package tech.devscast.validable.ui.screens
+package tech.devscast.validable_sample.ui.screens
 
 import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
