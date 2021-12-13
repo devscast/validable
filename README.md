@@ -1,4 +1,4 @@
-[kotlin-version](https://img.shields.io/badge/kotlin-1.4.31-orange)
+![kotlin-version](https://img.shields.io/badge/kotlin-1.5.31-orange)
 [![](https://jitpack.io/v/devscast/validable.svg)](https://jitpack.io/#devscast/validable)
 
 # validable
@@ -9,34 +9,37 @@ Validable is an extensible library that allows you to validate your text fields 
 
 This is what it looks like :
 
+<img src="screenshots/inputscreen.png?raw=true" width="220" alt="Welcome screen">
+
 ```kotlin  
 @Composable  
 fun MyScreen() { 
  
      val emailField = remember { EmailValidable() }  
      
-     TextField(  
-	     value = emailField.value,
-	     onValueChange = { emailField.value = it }, // update the text  
-		 isError = emailField.hasError(), // check if the field is not valid    
+	TextField(  
+	    value = emailField.value,
+	    onValueChange = { emailField.value = it }, // update the text  
+	    isError = emailField.hasError(), // check if the field is not valid    
 	)  
   
-	AnimatedVisibility(visible = emailField.hasError() {
+	AnimatedVisibility(visible = emailField.hasError()) {
 	
 	    Text(
-            text = emailField.errorMessage ?: "",
-            modifier = Modifier.fillMaxWidth(),
-            style = LocalTextStyle.current.copy(color = MaterialTheme.colors.error)
-        )
+                text = emailField.errorMessage ?: "",
+            	modifier = Modifier.fillMaxWidth(),
+            	style = LocalTextStyle.current.copy(color = MaterialTheme.colors.error)
+	    )
         
 	}  
 	
 	Button(onClick = {  
-		 // pass all fields to the withValidable method 
-		 withValidable(emailField) {  
+	    // pass all fields to the withValidable method 
+	    withValidable(emailField) {  
 		 
-			 // will be executed if all fields are valid 		
-			 Toast.makeText(context,"All fields are valid",Toast.LENGTH_SHORT).show() 
+		// will be executed if all fields are valid 		
+		Toast.makeText(context,"All fields are valid",Toast.LENGTH_SHORT).show() 
+		
 		} 
 	}) { 
 		Text(text = "Submit") 
