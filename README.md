@@ -73,3 +73,12 @@ dependencies {
 The latest version of this library is [![](https://jitpack.io/v/devscast/validable.svg)](https://jitpack.io/#devscast/validable)
 
 ## For full documentation, check out the [wiki](https://github.com/devscast/validable/wiki) page
+
+## Contributing
+
+We'd love contributions !
+
+We will also try to tag any issues on our [issue tracker](https://github.com/devscast/validable/issues) that we'd love help with, so
+if you just want to dip in, go have a look.
+
+If you do want to contribute to this project, we have a [code of conduct](CODE_OF_CONDUCT.md).
