@@ -6,7 +6,6 @@ private fun isFieldValid(text: String): Boolean {
     return text.isNotBlank()
 }
 
-private fun fieldValidationError(text: String) : String {
+private fun fieldValidationError(text: String): String {
     return "This field is required"
 }
-

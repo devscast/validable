@@ -10,15 +10,13 @@ open class BaseValidable(
 ) {
 
     var value: String by mutableStateOf("")
-    val errorMessage : String?
+    val errorMessage: String?
         get() = getError()
-
 
     private var displayErrors: Boolean by mutableStateOf(false)
 
     val isValid: Boolean
         get() = validator(value)
-
 
     fun enableShowErrors() {
         displayErrors = true

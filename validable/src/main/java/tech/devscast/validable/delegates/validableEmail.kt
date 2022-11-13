@@ -6,7 +6,7 @@ import tech.devscast.validable.EmailValidable
 import kotlin.properties.ReadOnlyProperty
 
 @Composable
-fun validableEmail() : ReadOnlyProperty<Any?,EmailValidable> {
+fun validableEmail(): ReadOnlyProperty<Any?, EmailValidable> {
     val instance = remember {
         EmailValidable()
     }

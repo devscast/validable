@@ -6,7 +6,7 @@ import tech.devscast.validable.NotEmptyValidable
 import kotlin.properties.ReadOnlyProperty
 
 @Composable
-fun validableNotEmpty() : ReadOnlyProperty<Any?, NotEmptyValidable> {
+fun validableNotEmpty(): ReadOnlyProperty<Any?, NotEmptyValidable> {
     val instance = remember {
         NotEmptyValidable()
     }

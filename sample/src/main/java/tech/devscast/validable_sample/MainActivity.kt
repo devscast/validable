@@ -10,16 +10,16 @@ import tech.devscast.validable_sample.ui.screens.InputScreen
 import tech.devscast.validable_sample.ui.theme.ValidableTheme
 
 class MainActivity : ComponentActivity() {
-	@ExperimentalAnimationApi
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
-		setContent {
-			ValidableTheme {
-				// A surface container using the 'background' color from the theme
-				Surface(color = MaterialTheme.colors.background) {
-					InputScreen()
-				}
-			}
-		}
-	}
+    @ExperimentalAnimationApi
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            ValidableTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(color = MaterialTheme.colors.background) {
+                    InputScreen()
+                }
+            }
+        }
+    }
 }
