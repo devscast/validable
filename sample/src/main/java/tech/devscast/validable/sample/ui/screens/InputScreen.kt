@@ -22,8 +22,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import tech.devscast.validable.EmailValidable
 import tech.devscast.validable.NotEmptyValidable
-import tech.devscast.validable.delegates.validableEmail
 import tech.devscast.validable.withValidable
 
 @ExperimentalAnimationApi
@@ -31,7 +31,7 @@ import tech.devscast.validable.withValidable
 fun InputScreen() {
     val context = LocalContext.current
 
-    val emailField by validableEmail()
+    val emailField = remember { EmailValidable() }
     val nameField = remember { NotEmptyValidable() }
 
     Column(

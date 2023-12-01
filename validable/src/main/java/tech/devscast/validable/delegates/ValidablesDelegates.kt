@@ -6,6 +6,7 @@ import tech.devscast.validable.EmailValidable
 import tech.devscast.validable.NotEmptyValidable
 import kotlin.properties.ReadOnlyProperty
 
+@Deprecated("Use remember { NotEmptyValidable() } instead")
 @Composable
 fun validableNotEmpty(): ReadOnlyProperty<Any?, NotEmptyValidable> {
     val instance = remember {
@@ -17,6 +18,7 @@ fun validableNotEmpty(): ReadOnlyProperty<Any?, NotEmptyValidable> {
     }
 }
 
+@Deprecated("Use remember { EmailValidable() } instead")
 @Composable
 fun validableEmail(): ReadOnlyProperty<Any?, EmailValidable> {
     val instance = remember {
