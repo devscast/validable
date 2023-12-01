@@ -29,7 +29,6 @@ import tech.devscast.validable.withValidable
 @ExperimentalAnimationApi
 @Composable
 fun InputScreen() {
-
     val context = LocalContext.current
 
     val emailField by validableEmail()
@@ -40,7 +39,6 @@ fun InputScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.padding(24.dp)
     ) {
-
         TextField(
             value = emailField.value,
             onValueChange = { emailField.value = it },
@@ -67,7 +65,6 @@ fun InputScreen() {
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(onClick = {
-
             withValidable(emailField, nameField) {
                 Toast.makeText(context, "All fields are valid", Toast.LENGTH_SHORT).show()
             }
