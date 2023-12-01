@@ -1,4 +1,4 @@
-package tech.devscast.validable_sample
+package tech.devscast.validable.sample
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

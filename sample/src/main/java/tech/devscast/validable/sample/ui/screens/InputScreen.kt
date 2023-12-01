@@ -1,4 +1,4 @@
-package tech.devscast.validable_sample.ui.screens
+package tech.devscast.validable.sample.ui.screens
 
 import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
@@ -22,17 +22,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import tech.devscast.validable.EmailValidable
 import tech.devscast.validable.NotEmptyValidable
-import tech.devscast.validable.delegates.validableEmail
 import tech.devscast.validable.withValidable
 
 @ExperimentalAnimationApi
 @Composable
 fun InputScreen() {
-
     val context = LocalContext.current
 
-    val emailField by validableEmail()
+    val emailField = remember { EmailValidable() }
     val nameField = remember { NotEmptyValidable() }
 
     Column(
@@ -40,7 +39,6 @@ fun InputScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.padding(24.dp)
     ) {
-
         TextField(
             value = emailField.value,
             onValueChange = { emailField.value = it },
@@ -67,7 +65,6 @@ fun InputScreen() {
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(onClick = {
-
             withValidable(emailField, nameField) {
                 Toast.makeText(context, "All fields are valid", Toast.LENGTH_SHORT).show()
             }

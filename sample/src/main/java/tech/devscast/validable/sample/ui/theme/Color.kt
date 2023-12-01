@@ -1,4 +1,4 @@
-package tech.devscast.validable_sample.ui.theme
+package tech.devscast.validable.sample.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

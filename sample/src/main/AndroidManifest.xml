@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Validable">
         <activity
-            android:name=".MainActivity"
+            android:name="tech.devscast.validable.sample.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Validable.NoActionBar">
