@@ -1,5 +1,9 @@
 package tech.devscast.validable
 
+/**
+ * Validates that a value is a positive number or equal to zero.
+ * If you don't want to allow zero as value, use [PositiveValidable] instead.
+ */
 class PositiveOrZeroValidable(message: String = "") : BaseValidable(
     validator = { value ->
         try {
