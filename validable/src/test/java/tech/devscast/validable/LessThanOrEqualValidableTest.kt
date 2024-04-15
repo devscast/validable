@@ -35,8 +35,8 @@ class LessThanOrEqualValidableTest {
     @Test
     fun `limit value is valid`() {
         validable.value = "100"
-        Assert.assertTrue(validable.hasError())
-        Assert.assertTrue(validable.errorMessage != null)
+        Assert.assertFalse(validable.hasError())
+        Assert.assertFalse(validable.errorMessage != null)
     }
 
     @Test
