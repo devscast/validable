@@ -1,14 +1,14 @@
 package tech.devscast.validable
 
-class NegativeValidable(message: String = "") : BaseValidable(
+class PositiveValidable(message: String = "") : BaseValidable(
     validator = { value ->
         try {
-            value.toFloat() < 0.0
+            value.toFloat() > 0.0
         } catch (e: Exception) {
             false
         }
     },
     errorFor = { value ->
-        message.ifBlank { "$value should be a negative number." }
+        message.ifBlank { "$value should be a positive number." }
     }
 )

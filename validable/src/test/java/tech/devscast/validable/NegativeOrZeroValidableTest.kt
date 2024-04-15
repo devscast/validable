@@ -4,20 +4,14 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
-class NegativeValidableTest {
+class NegativeOrZeroValidableTest {
 
-    lateinit var validable: NegativeValidable
+    lateinit var validable: NegativeOrZeroValidable
 
     @Before
     fun setUp() {
-        validable = NegativeValidable()
+        validable = NegativeOrZeroValidable()
         validable.enableShowErrors()
-    }
-
-    @Test
-    fun `zero is neither positive nor negative`() {
-        validable.value = "0"
-        Assert.assertTrue(validable.hasError())
     }
 
     @Test
@@ -33,8 +27,11 @@ class NegativeValidableTest {
     }
 
     @Test
-    fun `negative number is valid`() {
+    fun `negative or zero number is valid`() {
         validable.value = "-23"
+        Assert.assertFalse(validable.hasError())
+
+        validable.value = "0"
         Assert.assertFalse(validable.hasError())
 
         validable.value = "-24.3"

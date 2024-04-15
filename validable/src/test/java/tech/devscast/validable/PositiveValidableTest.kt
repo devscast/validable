@@ -4,13 +4,13 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
-class NegativeValidableTest {
+class PositiveValidableTest {
 
-    lateinit var validable: NegativeValidable
+    lateinit var validable: PositiveValidable
 
     @Before
     fun setUp() {
-        validable = NegativeValidable()
+        validable = PositiveValidable()
         validable.enableShowErrors()
     }
 
@@ -21,11 +21,11 @@ class NegativeValidableTest {
     }
 
     @Test
-    fun `positive or malformed string number has error`() {
+    fun `negative or malformed string number has error`() {
         validable.value = ""
         Assert.assertTrue(validable.hasError())
 
-        validable.value = "9"
+        validable.value = "-9"
         Assert.assertTrue(validable.hasError())
 
         validable.value = "4-5"
@@ -33,11 +33,11 @@ class NegativeValidableTest {
     }
 
     @Test
-    fun `negative number is valid`() {
-        validable.value = "-23"
+    fun `positive number is valid`() {
+        validable.value = "23"
         Assert.assertFalse(validable.hasError())
 
-        validable.value = "-24.3"
+        validable.value = "24.3"
         Assert.assertFalse(validable.hasError())
     }
 }
