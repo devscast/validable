@@ -7,11 +7,9 @@ import java.util.regex.Pattern
  */
 class CardSchemeValidable(scheme: CardScheme, message: String = "") : BaseValidable(
     validator = { value ->
-        scheme.patterns.any { pattern ->
-            Pattern.matches(pattern, value)
-        }
+        scheme.patterns.any { pattern -> Pattern.matches(pattern, value) }
     },
-    errorFor = { _  -> message.ifBlank { "Unsupported card type or invalid card number." } }
+    errorFor = { _ -> message.ifBlank { "Unsupported card type or invalid card number." } }
 )
 
 /**
@@ -94,7 +92,7 @@ open class CardScheme(val patterns: List<String>) {
             "/^(6759[0-9]{2})[0-9]{6,13}$/",
             "/^(50[0-9]{4})[0-9]{6,13}$/",
             "/^5[6-9][0-9]{10,17}$/",
-            "/^6[0-9]{11,18}$/",
+            "/^6[0-9]{11,18}$/"
         )
     )
 
@@ -105,7 +103,7 @@ open class CardScheme(val patterns: List<String>) {
     data object MasterCard : CardScheme(
         listOf(
             "/^5[1-5][0-9]{14}$/",
-            "/^2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12})$/",
+            "/^2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12})$/"
         )
     )
 

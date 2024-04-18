@@ -25,7 +25,7 @@ class CardSchemeValidableTest {
             Assert.assertTrue(validable.errorMessage, validable.hasError())
         }
     }
-    
+
     private fun getValidCardNumbers(): List<Map<String, Any>> {
         return listOf(
             mapOf("type" to CardScheme.Amex, "number" to "378282246310005"),

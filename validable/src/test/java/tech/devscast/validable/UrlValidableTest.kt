@@ -5,7 +5,7 @@ import org.junit.Before
 import org.junit.Test
 
 class UrlValidableTest {
-    
+
     lateinit var validable: UrlValidable
 
     @Before
@@ -49,7 +49,7 @@ class UrlValidableTest {
     private fun getValidCustomUrls(): List<String> {
         return listOf(
             "ftp://example.com",
-            "file://127.0.0.1",
+            "file://127.0.0.1"
         )
     }
 

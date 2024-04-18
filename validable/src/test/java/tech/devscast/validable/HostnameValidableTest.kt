@@ -17,10 +17,12 @@ class HostnameValidableTest {
     @Test
     fun `should only returns valid hostnames`() {
         val hostnames = mutableListOf<String>()
-        hostnames.addAll(getHostnames().filter { hostname ->
-            validable.value = hostname
-            !validable.hasError()
-        })
+        hostnames.addAll(
+            getHostnames().filter { hostname ->
+                validable.value = hostname
+                !validable.hasError()
+            }
+        )
 
         Assert.assertEquals(getValidHostnames(), hostnames)
     }
@@ -37,7 +39,7 @@ class HostnameValidableTest {
             "243.cd",
             "100.com",
             "hs.dd.com",
-            "www.demo.com",
+            "www.demo.com"
         )
     }
 

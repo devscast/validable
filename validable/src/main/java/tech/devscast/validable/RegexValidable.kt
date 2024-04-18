@@ -7,5 +7,5 @@ import java.util.regex.Pattern
  */
 class RegexValidable(pattern: String, message: String = "") : BaseValidable(
     validator = { value -> Pattern.matches(pattern, value) },
-    errorFor = { _ -> message.ifBlank { "This value is not valid." }}
+    errorFor = { _ -> message.ifBlank { "This value is not valid." } }
 )
