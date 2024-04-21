@@ -2,15 +2,14 @@ package tech.devscast.validable
 
 import java.util.regex.Pattern
 
-class EmailValidable : BaseValidable(validator = ::isEmailValid, errorFor = ::emailValidationError)
-
-private fun isEmailValid(email: String): Boolean {
-    return Pattern.matches("^[A-Za-z](.*)([@]{1})(.+)(\\.)(.+)", email)
-}
-
 /**
- * Returns an error to be displayed or null if no error was found
+ * Validates that a value is a valid email address.
  */
-private fun emailValidationError(email: String): String {
-    return "Invalid email: $email"
-}
+class EmailValidable(message: String = "") : BaseValidable(
+    validator = { value ->
+        Pattern.matches("^[A-Za-z](.*)([@]{1})(.+)(\\.)(.+)", value)
+    },
+    errorFor = { value ->
+        message.ifBlank { "$value is not a valid email address." }
+    }
+)
