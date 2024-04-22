@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.Packaging
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -9,9 +11,12 @@ plugins {
 android {
     compileSdk = 34
 
+    lint {
+        targetSdk = 34
+    }
+
     defaultConfig {
         minSdk = 21
-        targetSdk = 34
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -37,7 +42,8 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.5"
     }
-    packagingOptions {
+
+    packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
