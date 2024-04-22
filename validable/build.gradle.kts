@@ -1,5 +1,3 @@
-import com.android.build.api.dsl.Packaging
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -63,7 +61,7 @@ dependencies {
 publishing {
     publications {
         register<MavenPublication>("release") {
-            groupId = "com.github.devscast"
+            groupId = "tech.devscast"
             artifactId = "validable"
             version = "1.3.0"
 
