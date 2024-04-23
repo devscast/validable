@@ -1,3 +1,11 @@
+@file:Suppress("UnstableApiUsage")
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -6,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Validable"
-include ':validable'
-include ':sample'
+include(":validable")
+include(":sample")
