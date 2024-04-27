@@ -5,11 +5,11 @@ import java.util.regex.Pattern
 /**
  * Validates that a card number belongs to a specified scheme.
  */
-class CardSchemeValidable(scheme: CardScheme, message: String = "") : BaseValidable(
+class CardSchemeValidable(scheme: CardScheme, message: String? = null) : BaseValidable(
     validator = { value ->
         scheme.patterns.any { pattern -> Pattern.matches(pattern, value) }
     },
-    errorFor = { _ -> message.ifBlank { "Unsupported card type or invalid card number." } }
+    errorFor = { _ -> message ?: "Unsupported card type or invalid card number." }
 )
 
 /**

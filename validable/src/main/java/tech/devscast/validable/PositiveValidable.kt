@@ -5,7 +5,7 @@ package tech.devscast.validable
  * Zero is neither positive nor negative,
  * so you must use [PositiveOrZeroValidable] if you want to allow zero as value.
  */
-class PositiveValidable(message: String = "") : BaseValidable(
+class PositiveValidable(message: String? = null) : BaseValidable(
     validator = { value ->
         try {
             value.toFloat() > 0.0
@@ -14,6 +14,6 @@ class PositiveValidable(message: String = "") : BaseValidable(
         }
     },
     errorFor = { value ->
-        message.ifBlank { "$value should be a positive number." }
+        message ?: "$value should be a positive number."
     }
 )

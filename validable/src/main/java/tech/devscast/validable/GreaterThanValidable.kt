@@ -5,7 +5,7 @@ package tech.devscast.validable
  * To force that a value is greater than or equal to another value, see [GreaterThanOrEqualValidable].
  * To force a value is less than another value, see [LessThanValidable].
  */
-class GreaterThanValidable(comparedValue: Int, message: String = "") : BaseValidable(
+class GreaterThanValidable(comparedValue: Int, message: String? = null) : BaseValidable(
     validator = { value ->
         try {
             value.toFloat() > comparedValue
@@ -14,6 +14,6 @@ class GreaterThanValidable(comparedValue: Int, message: String = "") : BaseValid
         }
     },
     errorFor = { value ->
-        message.ifBlank { "$value should be equal to $comparedValue." }
+        message ?: "$value should be equal to $comparedValue."
     }
 )

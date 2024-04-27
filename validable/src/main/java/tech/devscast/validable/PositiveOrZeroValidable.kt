@@ -4,7 +4,7 @@ package tech.devscast.validable
  * Validates that a value is a positive number or equal to zero.
  * If you don't want to allow zero as value, use [PositiveValidable] instead.
  */
-class PositiveOrZeroValidable(message: String = "") : BaseValidable(
+class PositiveOrZeroValidable(message: String? = null) : BaseValidable(
     validator = { value ->
         try {
             value.toFloat() >= 0.0
@@ -13,6 +13,6 @@ class PositiveOrZeroValidable(message: String = "") : BaseValidable(
         }
     },
     errorFor = { text ->
-        message.ifBlank { "$text should be a positive number or zero." }
+        message ?: "$text should be a positive number or zero."
     }
 )

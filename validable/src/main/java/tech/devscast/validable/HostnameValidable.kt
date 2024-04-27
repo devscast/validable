@@ -12,7 +12,7 @@ private const val HOSTNAME_PATTERN =
  * The following top-level domains (TLD) are reserved according to RFC 2606
  * and that's why hostnames containing them are not considered valid: .example, .invalid, .localhost, and .test.
  */
-class HostnameValidable(message: String = "") : BaseValidable(
+class HostnameValidable(message: String? = null) : BaseValidable(
     validator = { value -> Pattern.matches(HOSTNAME_PATTERN, value) },
-    errorFor = { value -> message.ifBlank { "$value is not a valid hostname" } }
+    errorFor = { value -> message ?: "$value is not a valid hostname" }
 )

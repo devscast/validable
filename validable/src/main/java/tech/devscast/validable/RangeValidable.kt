@@ -3,7 +3,7 @@ package tech.devscast.validable
 /**
  * Validates that a given number is between some minimum and maximum.
  */
-class RangeValidable(minValue: Int, maxValue: Int, message: String = "") : BaseValidable(
+class RangeValidable(minValue: Int, maxValue: Int, message: String? = null) : BaseValidable(
     validator = { value ->
         try {
             (minValue..maxValue).contains(value.toInt())
@@ -12,6 +12,6 @@ class RangeValidable(minValue: Int, maxValue: Int, message: String = "") : BaseV
         }
     },
     errorFor = { value ->
-        message.ifBlank { "$value value should be between $minValue and $maxValue." }
+        message ?: "$value value should be between $minValue and $maxValue."
     }
 )
