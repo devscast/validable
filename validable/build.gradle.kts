@@ -2,7 +2,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("maven-publish")
-    id("org.jlleitschuh.gradle.ktlint") version "12.1.0"
+    id("io.gitlab.arturbosch.detekt") version "1.23.6"
     id("org.jetbrains.dokka") version "1.9.20"
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.14.0"
 }
@@ -71,4 +71,18 @@ publishing {
             }
         }
     }
+}
+
+detekt {
+    parallel = true
+
+    // Define the detekt configuration(s) you want to use.
+    // Defaults to the default detekt configuration.
+    config.setFrom("$rootDir/detekt/config.yml")
+
+    // Applies the config files on top of detekt's default config file. `false` by default.
+    buildUponDefaultConfig = false
+
+    // Specifying a baseline file. All findings stored in this file in subsequent runs of detekt.
+    baseline = file("$rootDir/detekt/baseline.xml")
 }
