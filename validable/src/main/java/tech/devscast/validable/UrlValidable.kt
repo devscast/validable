@@ -5,6 +5,11 @@ import java.net.URL
 
 /**
  * Validates that a value is a valid URL string.
+ *
+ * @param message
+ * (Optional) Custom error message for validation failure.
+ *
+ * @see HostnameValidable
  */
 class UrlValidable(message: String? = null) : BaseValidable(
     validator = { value ->
