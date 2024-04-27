@@ -2,7 +2,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("maven-publish")
-    id("org.jlleitschuh.gradle.ktlint") version "11.6.1"
+    id("org.jlleitschuh.gradle.ktlint") version "12.1.0"
     id("org.jetbrains.dokka") version "1.9.20"
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.14.0"
 }
@@ -52,7 +52,7 @@ android {
 
 dependencies {
     implementation("androidx.core:core-ktx:1.13.0")
-    implementation(platform("androidx.compose:compose-bom:2024.04.00"))
+    implementation(platform("androidx.compose:compose-bom:2024.04.01"))
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.compose.ui:ui")
     testImplementation("junit:junit:4.13.2")
