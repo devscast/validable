@@ -1,3 +1,6 @@
+import org.jetbrains.dokka.DokkaConfiguration.Visibility
+import org.jetbrains.dokka.gradle.DokkaTask
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -24,7 +27,10 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 
@@ -85,4 +91,25 @@ detekt {
 
     // Specifying a baseline file. All findings stored in this file in subsequent runs of detekt.
     baseline = file("$rootDir/detekt/baseline.xml")
+}
+
+tasks.dokkaHtml {
+    outputDirectory.set(file("$rootDir/dokka/html"))
+}
+
+tasks.dokkaGfm {
+    outputDirectory.set(file("$rootDir/dokka/markdown"))
+}
+
+tasks.withType<DokkaTask>().configureEach {
+    dokkaSourceSets.configureEach {
+        skipDeprecated.set(true)
+        skipEmptyPackages.set(true)
+        documentedVisibilities.set(
+            setOf(
+                Visibility.PUBLIC,
+                Visibility.PROTECTED,
+            )
+        )
+    }
 }
