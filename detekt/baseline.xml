@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>ForbiddenComment:IpValidable.kt$IpValidable$* Validates that a value is a valid IP address * TODO: add support for IP v6</ID>
+    <ID>ForbiddenComment:RangeValidableTest.kt$RangeValidableTest$// TODO: handle floats</ID>
+    <ID>LongMethod:UrlValidableTest.kt$UrlValidableTest$private fun getValidUrls(): List&lt;String></ID>
+    <ID>MaxLineLength:HostnameValidable.kt$"^(?!-)(?!.*\\d+\\.\\d+\\.\\d+\\.\\d+)(?!.*\\.example\$)(?!.*\\.invalid\$)(?!.*\\.localhost\$)(?!.*\\.test\$)[A-Za-z0-9-]{1,63}(?&lt;!-)(\\.[A-Za-z0-9-]{1,63})*\$"</ID>
+    <ID>MaxLineLength:IpValidable.kt$private const val IP_V4_PATTERN = "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\$"</ID>
+    <ID>SwallowedException:GreaterThanOrEqualValidable.kt$GreaterThanOrEqualValidable$e: Exception</ID>
+    <ID>SwallowedException:GreaterThanValidable.kt$GreaterThanValidable$e: Exception</ID>
+    <ID>SwallowedException:LessThanOrEqualValidable.kt$LessThanOrEqualValidable$e: Exception</ID>
+    <ID>SwallowedException:LessThanValidable.kt$LessThanValidable$e: Exception</ID>
+    <ID>SwallowedException:NegativeOrZeroValidable.kt$NegativeOrZeroValidable$e: Exception</ID>
+    <ID>SwallowedException:NegativeValidable.kt$NegativeValidable$e: Exception</ID>
+    <ID>SwallowedException:PositiveOrZeroValidable.kt$PositiveOrZeroValidable$e: Exception</ID>
+    <ID>SwallowedException:PositiveValidable.kt$PositiveValidable$e: Exception</ID>
+    <ID>SwallowedException:RangeValidable.kt$RangeValidable$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:GreaterThanOrEqualValidable.kt$GreaterThanOrEqualValidable$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:GreaterThanValidable.kt$GreaterThanValidable$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:LessThanOrEqualValidable.kt$LessThanOrEqualValidable$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:LessThanValidable.kt$LessThanValidable$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:NegativeOrZeroValidable.kt$NegativeOrZeroValidable$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:NegativeValidable.kt$NegativeValidable$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:PositiveOrZeroValidable.kt$PositiveOrZeroValidable$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:PositiveValidable.kt$PositiveValidable$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:RangeValidable.kt$RangeValidable$e: Exception</ID>
+  </CurrentIssues>
+</SmellBaseline>

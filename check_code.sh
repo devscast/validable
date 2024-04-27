@@ -1,0 +1,1 @@
+./gradlew detekt check test  --stacktrace
