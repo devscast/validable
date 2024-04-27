@@ -2,8 +2,11 @@ package tech.devscast.validable
 
 /**
  * Validates that a value is a positive number.
- * Zero is neither positive nor negative,
- * so you must use [PositiveOrZeroValidable] if you want to allow zero as value.
+ *
+ * @param message
+ * (Optional) Custom error message for validation failure.
+ *
+ * @see PositiveOrZeroValidable
  */
 class PositiveValidable(message: String? = null) : BaseValidable(
     validator = { value ->

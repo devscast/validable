@@ -7,10 +7,14 @@ private const val HOSTNAME_PATTERN =
 
 /**
  * Validates that the given value is a valid host name
- * To forces that value is an IP address see [IpValidable]
  *
  * The following top-level domains (TLD) are reserved according to RFC 2606
  * and that's why hostnames containing them are not considered valid: .example, .invalid, .localhost, and .test.
+ *
+ * @param message
+ * (Optional) Custom error message for validation failure.
+ *
+ * @see [IpValidable]
  */
 class HostnameValidable(message: String? = null) : BaseValidable(
     validator = { value -> Pattern.matches(HOSTNAME_PATTERN, value) },

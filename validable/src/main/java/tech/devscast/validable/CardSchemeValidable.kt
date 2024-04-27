@@ -4,6 +4,11 @@ import java.util.regex.Pattern
 
 /**
  * Validates that a card number belongs to a specified scheme.
+ *
+ * @param scheme
+ * The [CardScheme] to validate against.
+ * @param message
+ * (Optional) Custom error message for validation failure.
  */
 class CardSchemeValidable(vararg schemes: CardScheme, message: String? = null) : BaseValidable(
     validator = { value ->
@@ -16,12 +21,30 @@ class CardSchemeValidable(vararg schemes: CardScheme, message: String? = null) :
 )
 
 /**
+ * Represents a card scheme for validation purposes.
+ *
+ * A `CardScheme` defines a set of regular expressions used to identify card numbers belonging
+ * to a specific payment network (e.g., Visa, Mastercard). This class provides a way to validate
+ * card numbers against these predefined patterns.
+ *
  * see https://en.wikipedia.org/wiki/Payment_card_number
  * see https://www.regular-expressions.info/creditcard.html
+ *
+ *@param patterns A list of regular expressions that match valid card numbers for this scheme.
  */
 open class CardScheme protected constructor(val patterns: List<String>) {
 
     companion object {
+        /**
+         * Merges multiple card schemes into a single one.
+         *
+         * This static method combines the regular expression patterns from all the provided
+         * `CardScheme` objects into a single list. This allows for validating cards against a combination
+         * of schemes.
+         *
+         * @param schemes The `CardScheme` objects to be merged.
+         * @return A new `CardScheme` object containing the combined patterns.
+         */
         fun merge(vararg schemes: CardScheme): CardScheme {
             return CardScheme(schemes.flatMap { scheme -> scheme.patterns })
         }
