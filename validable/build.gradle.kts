@@ -1,6 +1,3 @@
-import org.jetbrains.dokka.DokkaConfiguration.Visibility
-import org.jetbrains.dokka.gradle.DokkaTask
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -61,7 +58,6 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.compose.ui:ui")
     testImplementation("junit:junit:4.13.2")
-    dokkaPlugin("org.jetbrains.dokka:android-documentation-plugin:1.9.20")
 }
 
 publishing {
