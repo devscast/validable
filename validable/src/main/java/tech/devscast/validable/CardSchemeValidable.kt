@@ -5,9 +5,12 @@ import java.util.regex.Pattern
 /**
  * Validates that a card number belongs to a specified scheme.
  */
-class CardSchemeValidable(scheme: CardScheme, message: String? = null) : BaseValidable(
+class CardSchemeValidable(vararg schemes: CardScheme, message: String? = null) : BaseValidable(
     validator = { value ->
-        scheme.patterns.any { pattern -> Pattern.matches(pattern, value) }
+        schemes.any { scheme ->
+            val compiledPatterns = scheme.patterns.map { Pattern.compile(it) }
+            compiledPatterns.any { pattern -> pattern.matcher(value).matches() }
+        }
     },
     errorFor = { _ -> message ?: "Unsupported card type or invalid card number." }
 )
@@ -16,7 +19,7 @@ class CardSchemeValidable(scheme: CardScheme, message: String? = null) : BaseVal
  * see https://en.wikipedia.org/wiki/Payment_card_number
  * see https://www.regular-expressions.info/creditcard.html
  */
-open class CardScheme(val patterns: List<String>) {
+open class CardScheme protected constructor(val patterns: List<String>) {
 
     companion object {
         fun merge(vararg schemes: CardScheme): CardScheme {
