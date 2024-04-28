@@ -63,6 +63,5 @@ markdown_extensions:
 nav:
   - 'Get Started': index.md
   - 'Built in validables':
-      - section/validables
-      - Page 1 : validables.md
+      - CardSchemeValidable : validables/cardscheme.md
   - 'Code of conduct': coc.md
