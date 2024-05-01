@@ -40,6 +40,7 @@ class CardSchemeValidableTest {
         }
     }
 
+    @Suppress("LongMethod")
     private fun getValidCardNumbers(): List<Map<String, Any>> {
         return listOf(
             mapOf("type" to CardScheme.Amex, "number" to "378282246310005"),
@@ -106,6 +107,7 @@ class CardSchemeValidableTest {
         )
     }
 
+    @Suppress("LongMethod")
     private fun getValidCardMap(): Map<CardScheme, String> {
         return mapOf(
             CardScheme.Amex to "371449635398431",
@@ -156,6 +158,7 @@ class CardSchemeValidableTest {
         )
     }
 
+    @Suppress("LongMethod")
     private fun getInvalidCardNumbers(): List<Map<String, Any>> {
         return listOf(
             mapOf("type" to CardScheme.Visa, "number" to "42424242424242424242"),
