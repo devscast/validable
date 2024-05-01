@@ -17,6 +17,7 @@ class CardSchemeValidableTest {
         }
     }
 
+    // to test the vararg constructor
     @Test
     fun `valid card numbers with multiple scheme validable are valid`() {
         getValidCardMap()
@@ -25,8 +26,6 @@ class CardSchemeValidableTest {
                 validable = CardSchemeValidable(CardScheme.Visa, CardScheme.MasterCard)
                 validable.enableShowErrors()
                 validable.value = card.value
-                val a = validable.errorMessage
-                println(a)
                 Assert.assertFalse(validable.errorMessage, validable.hasError())
             }
     }
