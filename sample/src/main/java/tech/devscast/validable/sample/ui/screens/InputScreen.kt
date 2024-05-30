@@ -10,12 +10,15 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
-import androidx.compose.material.LocalTextStyle
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.material3.Button
+import androidx.compose.material3.LocalTextStyle
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Shapes
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -49,7 +52,9 @@ fun InputScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.padding(24.dp)
     ) {
-        TextField(
+        OutlinedTextField(
+            shape = MaterialTheme.shapes.large,
+            label = { Text("Email address", style = MaterialTheme.typography.labelLarge) },
             value = emailField.value,
             onValueChange = { emailField.value = it },
             isError = emailField.hasError(),
@@ -61,7 +66,9 @@ fun InputScreen() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        TextField(
+        OutlinedTextField(
+            shape = MaterialTheme.shapes.large,
+            label = { Text(text = "Username", style = MaterialTheme.typography.labelLarge) },
             value = nameField.value,
             onValueChange = { nameField.value = it },
             isError = nameField.hasError(),
@@ -74,12 +81,15 @@ fun InputScreen() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Button(onClick = {
-            withValidable(emailField, nameField) {
-                Toast.makeText(context, "All fields are valid", Toast.LENGTH_SHORT).show()
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                withValidable(emailField, nameField) {
+                    Toast.makeText(context, "All fields are valid", Toast.LENGTH_SHORT).show()
+                }
             }
-        }) {
-            Text(text = "Continue")
+        ) {
+            Text(text = "Continue", style = MaterialTheme.typography.labelLarge)
         }
     }
 }
@@ -90,12 +100,12 @@ fun TextFieldError(textError: String) {
         Text(
             text = textError,
             modifier = Modifier.fillMaxWidth(),
-            style = LocalTextStyle.current.copy(color = MaterialTheme.colors.error)
+            style = LocalTextStyle.current.copy(color = MaterialTheme.colorScheme.error)
         )
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @ExperimentalAnimationApi
 @Composable
 fun InputScreenPreview() {
