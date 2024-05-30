@@ -40,7 +40,7 @@ fun InputScreen() {
     val multipleCardField = remember {
         CardSchemeValidable(
             CardScheme.merge(CardScheme.MasterCard, CardScheme.Visa),
-            "Invalid Card"
+            message = "Invalid Card"
         )
     }
 
