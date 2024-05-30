@@ -3,7 +3,6 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("maven-publish")
     id("io.gitlab.arturbosch.detekt") version "1.23.6"
-    id("org.jetbrains.dokka") version "1.9.20"
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.14.0"
 }
 
@@ -24,7 +23,10 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 
@@ -51,12 +53,11 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.13.0")
+    implementation("androidx.core:core-ktx:1.13.1")
     implementation(platform("androidx.compose:compose-bom:2024.04.01"))
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.compose.ui:ui")
     testImplementation("junit:junit:4.13.2")
-    dokkaPlugin("org.jetbrains.dokka:android-documentation-plugin:1.9.20")
 }
 
 publishing {

@@ -22,6 +22,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import tech.devscast.validable.CardScheme
+import tech.devscast.validable.CardSchemeValidable
 import tech.devscast.validable.EmailValidable
 import tech.devscast.validable.NotEmptyValidable
 import tech.devscast.validable.withValidable
@@ -33,6 +35,14 @@ fun InputScreen() {
 
     val emailField = remember { EmailValidable() }
     val nameField = remember { NotEmptyValidable() }
+
+    val cardField = remember { CardSchemeValidable(CardScheme.MasterCard,) }
+    val multipleCardField = remember {
+        CardSchemeValidable(
+            CardScheme.merge(CardScheme.MasterCard, CardScheme.Visa),
+            message = "Invalid Card"
+        )
+    }
 
     Column(
         verticalArrangement = Arrangement.Center,
