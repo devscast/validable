@@ -54,8 +54,8 @@ android {
 
 dependencies {
     implementation("androidx.core:core-ktx:1.13.1")
-    implementation(platform("androidx.compose:compose-bom:2024.04.01"))
-    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation(platform("androidx.compose:compose-bom:2024.05.00"))
+    implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("androidx.compose.ui:ui")
     testImplementation("junit:junit:4.13.2")
 }
@@ -65,7 +65,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "tech.devscast"
             artifactId = "validable"
-            version = "1.3.0"
+            version = "2.0.0-alpha01"
 
             afterEvaluate {
                 from(components["release"])

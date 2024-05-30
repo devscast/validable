@@ -2,7 +2,7 @@
 
 ![kotlin-version](https://img.shields.io/badge/kotlin-1.9.20-blue)
 [![](https://jitpack.io/v/devscast/validable.svg)](https://jitpack.io/#devscast/validable)
-[![Build](https://github.com/devscast/validable/actions/workflows/Build.yaml/badge.svg)](https://github.com/devscast/validable/actions/workflows/build.yaml)
+[![build](https://github.com/devscast/validable/actions/workflows/build.yaml/badge.svg)](https://github.com/devscast/validable/actions/workflows/build.yaml)
 
 Validating text fields when using jetpack compose can sometimes be challenging and verbose.
 
