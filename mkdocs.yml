@@ -63,5 +63,24 @@ markdown_extensions:
 nav:
   - 'Get Started': index.md
   - 'Built in validables':
-      - CardSchemeValidable : validables/cardscheme.md
+      - 'CardSchemeValidable' : validables/cardscheme.md
+      - 'Email' : validables/email.md
+      - 'Equal To' : validables/equal_to.md
+      - 'Greater Than Or Equal' : validables/greater_than_or_equal.md
+      - 'Greater Than' : validables/greater_than.md
+      - 'HostName' : validables/host_name.md
+      - 'IP Address' : validables/ip.md
+      - validables/less_than.md
+      - validables/less_than_or_equal.md
+      - validables/negative_or_zero.md
+      - validables/negative.md
+      - validables/not_blank.md
+      - validables/not_empty.md
+      - validables/not_equal.md
+      - validables/positive.md
+      - validables/positive_or_zero.md
+      - validables/range.md
+      - validables/regex.md
+      - validables/url.md
+
   - 'Code of conduct': coc.md
