@@ -120,8 +120,8 @@ public final class tech/devscast/validable/CardScheme$Visa : tech/devscast/valid
 
 public final class tech/devscast/validable/CardSchemeValidable : tech/devscast/validable/BaseValidable {
 	public static final field $stable I
-	public fun <init> ([Ltech/devscast/validable/CardScheme;Ljava/lang/String;)V
-	public synthetic fun <init> ([Ltech/devscast/validable/CardScheme;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ltech/devscast/validable/CardScheme;Ljava/lang/String;)V
+	public synthetic fun <init> (Ltech/devscast/validable/CardScheme;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 }
 
 public final class tech/devscast/validable/EmailValidable : tech/devscast/validable/BaseValidable {

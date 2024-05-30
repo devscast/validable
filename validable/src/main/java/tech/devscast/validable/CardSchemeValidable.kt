@@ -10,12 +10,10 @@ import java.util.regex.Pattern
  * @param message
  * (Optional) Custom error message for validation failure.
  */
-class CardSchemeValidable(vararg schemes: CardScheme, message: String? = null) : BaseValidable(
+class CardSchemeValidable(scheme: CardScheme, message: String? = null) : BaseValidable(
     validator = { value ->
-        schemes.any { scheme ->
-            val compiledPatterns = scheme.patterns.map { Pattern.compile(it) }
-            compiledPatterns.any { pattern -> pattern.matcher(value).matches() }
-        }
+        val compiledPatterns = scheme.patterns.map { Pattern.compile(it) }
+        compiledPatterns.any { pattern -> pattern.matcher(value).matches() }
     },
     errorFor = { _ -> message ?: "Unsupported card type or invalid card number." }
 )

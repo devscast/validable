@@ -8,12 +8,6 @@ val cardField = CardSchemeValidable(
         "Only MasterCard is supported"
 )
 
-// Supporting multiple cardScheme
-val multipleCardField = CardSchemeValidable(
-        CardScheme.MasterCard,CardScheme.Visa,
-        "Only MasterCard and Visa are supported"
-)
-
 // Merging multiple CardSchemes into one
 val mixedCardScheme = CardScheme.merge(CardScheme.MasterCard, CardScheme.Visa)
 

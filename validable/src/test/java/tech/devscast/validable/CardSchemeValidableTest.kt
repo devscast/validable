@@ -20,10 +20,11 @@ class CardSchemeValidableTest {
     // to test the vararg constructor
     @Test
     fun `valid card numbers with multiple scheme validable are valid`() {
+        val mergedScheme = CardScheme.merge(CardScheme.Visa, CardScheme.MasterCard)
         getValidCardMap()
             .filter { it.key == CardScheme.Visa || it.key == CardScheme.MasterCard }
             .forEach { card ->
-                validable = CardSchemeValidable(CardScheme.Visa, CardScheme.MasterCard)
+                validable = CardSchemeValidable(mergedScheme)
                 validable.enableShowErrors()
                 validable.value = card.value
                 Assert.assertFalse(validable.errorMessage, validable.hasError())
