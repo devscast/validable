@@ -1,7 +1,5 @@
 package tech.devscast.validable.sample.ui.screens
 
-import android.content.ContentValues.TAG
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
@@ -19,7 +17,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,9 +27,8 @@ import androidx.compose.ui.unit.sp
 import tech.devscast.validable.CardScheme
 import tech.devscast.validable.CardSchemeValidable
 import tech.devscast.validable.EmailValidable
-import tech.devscast.validable.HostnameValidable
+import tech.devscast.validable.GreaterThanValidable
 import tech.devscast.validable.NotEmptyValidable
-import tech.devscast.validable.RegexValidable
 import tech.devscast.validable.UrlValidable
 import tech.devscast.validable.withValidable
 
@@ -50,8 +46,8 @@ fun InputScreen() {
         UrlValidable()
     }
 
-    val hostnameField = remember {
-        HostnameValidable()
+    val ageTextField = remember {
+        GreaterThanValidable(18, "Age must be greater than 18")
     }
 
     Column(
@@ -100,7 +96,6 @@ fun InputScreen() {
         )
 
         AnimatedVisibility(visible = cardField.hasError()) {
-            Log.d(TAG, "InputScreen: ${cardField.errorMessage}")
             TextFieldError(textError = cardField.errorMessage ?: "")
         }
 
@@ -108,7 +103,7 @@ fun InputScreen() {
 
         OutlinedTextField(
             shape = RoundedCornerShape(20.dp),
-            label = { Text(text = "Url", style = MaterialTheme.typography.labelLarge) },
+            label = { Text(text = "Your website", style = MaterialTheme.typography.labelLarge) },
             value = urlField.value,
             onValueChange = { urlField.value = it },
             isError = urlField.hasError(),
@@ -123,17 +118,17 @@ fun InputScreen() {
 
         OutlinedTextField(
             shape = RoundedCornerShape(20.dp),
-            label = { Text(text = "Hostname", style = MaterialTheme.typography.labelLarge) },
-            value = hostnameField.value,
+            label = { Text(text = "Your Age", style = MaterialTheme.typography.labelLarge) },
+            value = ageTextField.value,
             onValueChange = {
-                hostnameField.value = it
+                ageTextField.value = it
             },
-            isError = hostnameField.hasError(),
+            isError = ageTextField.hasError(),
             modifier = Modifier.fillMaxWidth()
         )
 
-        AnimatedVisibility(visible = hostnameField.hasError()) {
-            TextFieldError(textError = hostnameField.errorMessage ?: "")
+        AnimatedVisibility(visible = ageTextField.hasError()) {
+            TextFieldError(textError = ageTextField.errorMessage ?: "")
         }
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -146,7 +141,7 @@ fun InputScreen() {
                     nameField,
                     cardField,
                     urlField,
-                    hostnameField
+                    ageTextField
                 ) {
                     Toast.makeText(context, "All fields are valid", Toast.LENGTH_SHORT).show()
                 }
