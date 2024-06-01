@@ -10,7 +10,7 @@ Validable is an extensible library that allows you to validate your text fields 
 
 This is what it looks like :
 
-<img src="screenshots/inputScreen.png?raw=true" width="459" alt="Welcome screen">
+<img src="screenshots/inputscreen.png?raw=true" width="459" alt="Welcome screen">
 
 ```kotlin  
 @Composable  
