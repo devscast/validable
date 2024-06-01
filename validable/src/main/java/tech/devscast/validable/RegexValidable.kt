@@ -12,5 +12,5 @@ import java.util.regex.Pattern
  */
 class RegexValidable(pattern: String, message: String? = null) : BaseValidable(
     validator = { value -> Pattern.matches(pattern, value) },
-    errorFor = { _ -> message ?: "This value is not valid." }
+    errorFor = { _ -> message ?: "This value is not a valid regex." }
 )
