@@ -9,39 +9,44 @@ Validating text fields when using jetpack compose can sometimes be challenging a
 Validable is an extensible library that allows you to validate your text fields in a simpler way while having a reusable code.
 
 ```kotlin  
-@Composable  
-fun MyScreen() { 
- 
-     val emailField = remember { EmailValidable() }  
-     
-	TextField(  
-	    value = emailField.value,
-	    onValueChange = { emailField.value = it }, // update the text  
-	    isError = emailField.hasError(), // check if the field is not valid    
-	)  
-  
-	AnimatedVisibility(visible = emailField.hasError()) {
-	
-	    Text(
-                text = emailField.errorMessage ?: "",
-            	modifier = Modifier.fillMaxWidth(),
-            	style = LocalTextStyle.current.copy(color = MaterialTheme.colors.error)
-	    )
-        
-	}  
-	
-	Button(onClick = {  
-	    // pass all fields to the withValidable method 
-	    withValidable(emailField) {  
-		 
-		// will be executed if all fields are valid 		
-		Toast.makeText(context,"All fields are valid",Toast.LENGTH_SHORT).show() 
-		
-		} 
-	}) { 
-		Text(text = "Submit") 
-	}  
-}  
+@Composable
+fun MyScreen() {
+
+    val emailField = remember { EmailValidable() }
+
+    // pass all fields to the withValidable method
+    val validator = rememberValidator(emailField)
+
+
+    TextField(
+        value = emailField.value,
+        onValueChange = { emailField.value = it }, // update the text  
+        isError = emailField.hasError(), // check if the field is not valid    
+    )
+
+    AnimatedVisibility(visible = emailField.hasError()) {
+
+        Text(
+            text = emailField.errorMessage ?: "",
+            modifier = Modifier.fillMaxWidth(),
+            style = LocalTextStyle.current.copy(color = MaterialTheme.colors.error)
+        )
+
+    }
+
+    Button(
+        // a state to check if all fields are valid, without submitting the form
+        enabled = validator.isValid,
+        onClick = {
+            validator.validate {
+                // will be executed if all fields are valid 
+                Toast.makeText(context, "All fields are valid", Toast.LENGTH_SHORT).show()
+            }
+        }
+    ) {
+        Text(text = "Submit")
+    }
+} 
 ```
 
 ## Installation

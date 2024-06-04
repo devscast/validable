@@ -16,9 +16,13 @@ This is what it looks like :
 @Composable  
 fun MyScreen() { 
  
-     val emailField = remember { EmailValidable() }  
-     
-	TextField(  
+     val emailField = remember { EmailValidable() }
+
+    // pass all fields to the withValidable method
+    val validator = rememberValidator(emailField)
+
+
+    TextField(  
 	    value = emailField.value,
 	    onValueChange = { emailField.value = it }, // update the text  
 	    isError = emailField.hasError(), // check if the field is not valid    
@@ -34,15 +38,16 @@ fun MyScreen() {
         
 	}  
 	
-	Button(onClick = {  
-	    // pass all fields to the withValidable method 
-	    withValidable(emailField) {  
-		 
-		// will be executed if all fields are valid 		
-		Toast.makeText(context,"All fields are valid",Toast.LENGTH_SHORT).show() 
-		
-		} 
-	}) { 
+	Button(
+        // a state to check if all fields are valid, without submitting the form
+        enabled = validator.isValid,
+        onClick = { 
+            validator.validate { 
+                // will be executed if all fields are valid 
+                Toast.makeText(context, "All fields are valid", Toast.LENGTH_SHORT).show()
+            } 
+        }
+    ) { 
 		Text(text = "Submit") 
 	}  
 }  
