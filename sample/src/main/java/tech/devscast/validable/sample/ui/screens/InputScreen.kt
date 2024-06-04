@@ -32,7 +32,7 @@ import tech.devscast.validable.EmailValidable
 import tech.devscast.validable.GreaterThanValidable
 import tech.devscast.validable.NotEmptyValidable
 import tech.devscast.validable.UrlValidable
-import tech.devscast.validable.rememberValidator
+import tech.devscast.validable.core.rememberValidator
 
 @ExperimentalAnimationApi
 @Composable
@@ -147,6 +147,18 @@ fun InputScreen() {
             }
         ) {
             Text(text = "Continue", style = MaterialTheme.typography.labelLarge)
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(
+            enabled = validator.isValid,
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                Toast.makeText(context, "All fields are valid", Toast.LENGTH_SHORT).show()
+            }
+        ) {
+            Text(text = "Enabled only when is valid", style = MaterialTheme.typography.labelLarge)
         }
         Spacer(modifier = Modifier.height(24.dp))
     }
