@@ -242,12 +242,14 @@ public final class tech/devscast/validable/UrlValidable : tech/devscast/validabl
 	public synthetic fun <init> (Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 }
 
-public final class tech/devscast/validable/WithValidableKt {
-	public static final fun withValidable ([Ltech/devscast/validable/BaseValidable;Lkotlin/jvm/functions/Function0;)V
+public final class tech/devscast/validable/core/Validator {
+	public static final field $stable I
+	public fun <init> ([Ltech/devscast/validable/BaseValidable;)V
+	public final fun isValid (Landroidx/compose/runtime/Composer;I)Z
+	public final fun validate (Lkotlin/jvm/functions/Function0;)V
 }
 
-public final class tech/devscast/validable/delegates/ValidablesDelegatesKt {
-	public static final fun validableEmail (Landroidx/compose/runtime/Composer;I)Lkotlin/properties/ReadOnlyProperty;
-	public static final fun validableNotEmpty (Landroidx/compose/runtime/Composer;I)Lkotlin/properties/ReadOnlyProperty;
+public final class tech/devscast/validable/core/ValidatorKt {
+	public static final fun rememberValidator ([Ltech/devscast/validable/BaseValidable;Landroidx/compose/runtime/Composer;I)Ltech/devscast/validable/core/Validator;
 }
 
