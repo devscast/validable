@@ -1,10 +1,12 @@
+import com.vanniktech.maven.publish.SonatypeHost
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("maven-publish")
     id("io.gitlab.arturbosch.detekt") version "1.23.6"
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.14.0"
     id("org.jetbrains.kotlin.plugin.compose")
+    id("com.vanniktech.maven.publish") version "0.28.0"
 }
 
 android {
@@ -58,20 +60,6 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
 }
 
-publishing {
-    publications {
-        register<MavenPublication>("release") {
-            groupId = "tech.devscast"
-            artifactId = "validable"
-            version = "2.0.0-alpha01"
-
-            afterEvaluate {
-                from(components["release"])
-            }
-        }
-    }
-}
-
 detekt {
     parallel = true
 
@@ -84,4 +72,26 @@ detekt {
 
     // Specifying a baseline file. All findings stored in this file in subsequent runs of detekt.
     baseline = file("$rootDir/detekt/baseline.xml")
+}
+
+
+mavenPublishing {
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    signAllPublications()
+
+    coordinates("tech.devscast", "validable", "0.1.0-alpha01")
+
+    pom {
+        name.set("Validable")
+        description.set("An easy-to-use text field validator for Kotlin & Jetpack compose.")
+        inceptionYear.set("2024")
+        url.set("https://github.com/devscast/validable")
+        licenses {
+            license {
+                name.set("The Apache License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+            }
+        }
+    }
 }
