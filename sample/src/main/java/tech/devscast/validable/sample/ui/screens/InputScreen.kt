@@ -32,7 +32,7 @@ import tech.devscast.validable.EmailValidable
 import tech.devscast.validable.GreaterThanValidable
 import tech.devscast.validable.NotEmptyValidable
 import tech.devscast.validable.UrlValidable
-import tech.devscast.validable.withValidable
+import tech.devscast.validable.rememberValidator
 
 @ExperimentalAnimationApi
 @Composable
@@ -44,13 +44,13 @@ fun InputScreen() {
 
     val cardField = remember { CardSchemeValidable(CardScheme.MasterCard) }
 
-    val urlField = remember {
-        UrlValidable()
-    }
+    val urlField = remember { UrlValidable() }
 
     val ageTextField = remember {
         GreaterThanValidable(18, "Age must be greater than 18")
     }
+
+    val validator = rememberValidator(emailField, nameField, cardField, urlField, ageTextField)
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -141,13 +141,7 @@ fun InputScreen() {
         Button(
             modifier = Modifier.fillMaxWidth(),
             onClick = {
-                withValidable(
-                    emailField,
-                    nameField,
-                    cardField,
-                    urlField,
-                    ageTextField
-                ) {
+                validator.validate {
                     Toast.makeText(context, "All fields are valid", Toast.LENGTH_SHORT).show()
                 }
             }
