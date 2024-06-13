@@ -1,6 +1,6 @@
 # Validable
 
-![kotlin-version](https://img.shields.io/badge/kotlin-1.9.20-blue)
+![kotlin-version](https://img.shields.io/badge/kotlin-2.0.0-blue)
 [![](https://jitpack.io/v/devscast/validable.svg)](https://jitpack.io/#devscast/validable)
 [![build](https://github.com/devscast/validable/actions/workflows/build.yaml/badge.svg)](https://github.com/devscast/validable/actions/workflows/build.yaml)
 
