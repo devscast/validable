@@ -61,7 +61,7 @@ dependencies {
 publishing {
     publications {
         register<MavenPublication>("release") {
-            groupId = "tech.devscast"
+            groupId = "com.github.devscast"
             artifactId = "validable"
             version = "2.0.0-alpha01"
 
