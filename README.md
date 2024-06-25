@@ -1,7 +1,7 @@
-![Maven Central Version](https://img.shields.io/maven-central/v/tech.devscast/validable?color=blue)
-[![Build](https://github.com/devscast/validable/actions/workflows/Build.yaml/badge.svg)](https://github.com/devscast/validable/actions/workflows/build.yaml)
-
 # validable
+
+![Maven Central Version](https://img.shields.io/maven-central/v/tech.devscast/validable?color=blue)
+[![build](https://github.com/devscast/validable/actions/workflows/build.yaml/badge.svg)](https://github.com/devscast/validable/actions/workflows/build.yaml)
 
 Validating text fields when using jetpack compose can sometimes be challenging and verbose.
 
@@ -65,7 +65,7 @@ dependencies {
 
 The latest version is ![Maven Central Version](https://img.shields.io/maven-central/v/tech.devscast/validable?color=blue)
 
-## For full documentation, check out the [wiki](https://github.com/devscast/validable/wiki) page
+## For full documentation, check out [https://devscast.github.io/validable](https://devscast.github.io/validable)
 
 ## Contributing
 
