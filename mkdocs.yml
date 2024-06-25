@@ -62,6 +62,7 @@ markdown_extensions:
 
 nav:
   - 'Get Started': index.md
+  - 'Create a validable': create_validable.md
   - 'Built in validables':
       - 'CardSchemeValidable' : validables/cardscheme.md
       - 'Email' : validables/email.md

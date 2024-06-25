@@ -3,9 +3,7 @@
 ![Maven Central Version](https://img.shields.io/maven-central/v/tech.devscast/validable?color=blue)
 [![build](https://github.com/devscast/validable/actions/workflows/build.yaml/badge.svg)](https://github.com/devscast/validable/actions/workflows/build.yaml)
 
-Validating text fields when using jetpack compose can sometimes be challenging and verbose.
-
-Validable is an extensible library that allows you to validate your text fields in a simpler way while having a reusable code.
+Validable is an extensible library that simplifies text field validation for Jetpack Compose by providing abstraction and reusable validation logic.
 
 ```kotlin  
 @Composable
