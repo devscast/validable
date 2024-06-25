@@ -23,6 +23,7 @@ class ValidatorTest {
     }
 
     @Test
+
     fun `test validator when input are valid`(){
         val validable1 = EmailValidable()
         validable1.value = "example@gmail.com"

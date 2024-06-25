@@ -1,7 +1,6 @@
 # Validable
 
-![kotlin-version](https://img.shields.io/badge/kotlin-2.0.0-blue)
-[![](https://jitpack.io/v/devscast/validable.svg)](https://jitpack.io/#devscast/validable)
+![Maven Central Version](https://img.shields.io/maven-central/v/tech.devscast/validable?color=blue)
 [![build](https://github.com/devscast/validable/actions/workflows/build.yaml/badge.svg)](https://github.com/devscast/validable/actions/workflows/build.yaml)
 
 Validating text fields when using jetpack compose can sometimes be challenging and verbose.
@@ -49,26 +48,14 @@ fun MyScreen() {
 } 
 ```
 
-## Installation
+## Gradle setup
 
-**Step 1.** Add the JitPack repository to your build file
+Include the **validable** dependency in your module `build.gradle` or `build.gradle.kts` :
 
-Add it in your root build.gradle at the end of repositories:
 
-```groovy
-allprojects {
-    repositories {
-        ...
-        maven { url 'https://jitpack.io' }
-    }
-}
-```
-
-**Step 2.** Add the dependency
-
-```groovy
+```kotlin
 dependencies {
-    implementation 'com.github.devscast:validable:{latest-version}'
+    implementation("tech.devscast:validable:<version>")
 }
 ```
 
