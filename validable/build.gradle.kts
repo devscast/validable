@@ -1,12 +1,37 @@
 import com.vanniktech.maven.publish.SonatypeHost
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("io.gitlab.arturbosch.detekt") version "1.23.6"
-    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.14.0"
-    id("org.jetbrains.kotlin.plugin.compose")
-    id("com.vanniktech.maven.publish") version "0.28.0"
+    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.compose)
+
+    alias(libs.plugins.detekt)
+    alias(libs.plugins.binaryCompatibiltyValidator)
+    alias(libs.plugins.mavenPublish)
+}
+
+kotlin {
+    androidTarget {
+        publishLibraryVariants("release")
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+        }
+    }
+    jvm()
+
+    sourceSets {
+        commonMain.dependencies {
+            implementation(compose.runtime)
+            implementation(compose.ui)
+        }
+
+        commonTest.dependencies {
+            implementation(kotlin("test-junit"))
+        }
+    }
 }
 
 android {
@@ -23,22 +48,9 @@ android {
         consumerProguardFiles("consumer-rules.pro")
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -50,14 +62,6 @@ android {
         }
     }
     namespace = "tech.devscast.validable"
-}
-
-dependencies {
-    implementation("androidx.core:core-ktx:1.13.1")
-    implementation(platform("androidx.compose:compose-bom:2024.06.00"))
-    implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("androidx.compose.ui:ui:1.6.8")
-    testImplementation("junit:junit:4.13.2")
 }
 
 detekt {
