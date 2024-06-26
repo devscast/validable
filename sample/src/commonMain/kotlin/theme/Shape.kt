@@ -1,4 +1,4 @@
-package tech.devscast.validable.sample.ui.theme
+package theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Shapes

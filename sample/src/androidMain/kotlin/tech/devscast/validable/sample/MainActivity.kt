@@ -10,8 +10,8 @@ import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import tech.devscast.validable.sample.ui.screens.InputScreen
-import tech.devscast.validable.sample.ui.theme.ValidableTheme
+import App
+import theme.ValidableTheme
 
 class MainActivity : ComponentActivity() {
     @ExperimentalAnimationApi
@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colorScheme.background) {
                     Box(modifier = Modifier.safeDrawingPadding()) {
-                        InputScreen()
+                        App()
                     }
                 }
             }

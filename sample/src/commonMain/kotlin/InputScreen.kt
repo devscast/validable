@@ -1,6 +1,3 @@
-package tech.devscast.validable.sample.ui.screens
-
-import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Arrangement
@@ -22,8 +19,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import tech.devscast.validable.CardScheme
@@ -36,8 +31,7 @@ import tech.devscast.validable.core.rememberValidator
 
 @ExperimentalAnimationApi
 @Composable
-fun InputScreen() {
-    val context = LocalContext.current
+fun App() {
 
     val emailField = remember { EmailValidable() }
     val nameField = remember { NotEmptyValidable() }
@@ -142,7 +136,7 @@ fun InputScreen() {
             modifier = Modifier.fillMaxWidth(),
             onClick = {
                 validator.validate {
-                    Toast.makeText(context, "All fields are valid", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(context, "All fields are valid", Toast.LENGTH_SHORT).show()
                 }
             }
         ) {
@@ -155,7 +149,7 @@ fun InputScreen() {
             enabled = validator.isValid,
             modifier = Modifier.fillMaxWidth(),
             onClick = {
-                Toast.makeText(context, "All fields are valid", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(context, "All fields are valid", Toast.LENGTH_SHORT).show()
             }
         ) {
             Text(text = "Enabled only when is valid", style = MaterialTheme.typography.labelLarge)
@@ -174,11 +168,4 @@ fun TextFieldError(textError: String) {
             style = LocalTextStyle.current.copy(color = MaterialTheme.colorScheme.error)
         )
     }
-}
-
-@Preview(showBackground = true)
-@ExperimentalAnimationApi
-@Composable
-fun InputScreenPreview() {
-    InputScreen()
 }

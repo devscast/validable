@@ -1,4 +1,4 @@
-package tech.devscast.validable.sample.ui.theme
+package theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

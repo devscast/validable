@@ -10,7 +10,8 @@ class CardSchemeValidableTest {
     @Test
     fun `valid card numbers are valid`() {
         getValidCardNumbers().forEach { card ->
-            validable = CardSchemeValidable(card["type"] as CardScheme)
+            validable =
+                CardSchemeValidable(card["type"] as CardScheme)
             validable.enableShowErrors()
             validable.value = card["number"].toString()
             Assert.assertFalse(validable.errorMessage, validable.hasError())
@@ -20,11 +21,15 @@ class CardSchemeValidableTest {
     // to test the vararg constructor
     @Test
     fun `valid card numbers with multiple scheme validable are valid`() {
-        val mergedScheme = CardScheme.merge(CardScheme.Visa, CardScheme.MasterCard)
+        val mergedScheme = CardScheme.merge(
+            CardScheme.Visa,
+            CardScheme.MasterCard
+        )
         getValidCardMap()
             .filter { it.key == CardScheme.Visa || it.key == CardScheme.MasterCard }
             .forEach { card ->
-                validable = CardSchemeValidable(mergedScheme)
+                validable =
+                    CardSchemeValidable(mergedScheme)
                 validable.enableShowErrors()
                 validable.value = card.value
                 Assert.assertFalse(validable.errorMessage, validable.hasError())
@@ -34,7 +39,8 @@ class CardSchemeValidableTest {
     @Test
     fun `invalid card number have error`() {
         getInvalidCardNumbers().forEach { card ->
-            validable = CardSchemeValidable(card["type"] as CardScheme)
+            validable =
+                CardSchemeValidable(card["type"] as CardScheme)
             validable.enableShowErrors()
             validable.value = card["number"].toString()
             Assert.assertTrue(validable.errorMessage, validable.hasError())
@@ -89,22 +95,10 @@ class CardSchemeValidableTest {
             mapOf("type" to CardScheme.Visa, "number" to "4012888888881881"),
             mapOf("type" to CardScheme.Visa, "number" to "4222222222222"),
             mapOf("type" to CardScheme.Visa, "number" to "4917610000000000003"),
-            mapOf(
-                "type" to CardScheme.merge(CardScheme.Amex, CardScheme.Visa),
-                "number" to "4111111111111111"
-            ),
-            mapOf(
-                "type" to CardScheme.merge(CardScheme.Amex, CardScheme.Visa),
-                "number" to "378282246310005"
-            ),
-            mapOf(
-                "type" to CardScheme.merge(CardScheme.Jcb, CardScheme.MasterCard),
-                "number" to "5105105105105100"
-            ),
-            mapOf(
-                "type" to CardScheme.merge(CardScheme.Visa, CardScheme.MasterCard),
-                "number" to "5105105105105100"
-            )
+            mapOf("type" to CardScheme.merge(CardScheme.Amex, CardScheme.Visa), "number" to "4111111111111111"),
+            mapOf("type" to CardScheme.merge(CardScheme.Amex, CardScheme.Visa),"number" to "378282246310005"),
+            mapOf("type" to CardScheme.merge(CardScheme.Jcb, CardScheme.MasterCard), "number" to "5105105105105100"),
+            mapOf("type" to CardScheme.merge(CardScheme.Visa, CardScheme.MasterCard), "number" to "5105105105105100")
         )
     }
 
@@ -173,19 +167,10 @@ class CardSchemeValidableTest {
             mapOf("type" to CardScheme.Amex, "number" to "invalid"), // A string
             mapOf("type" to CardScheme.Amex, "number" to "0"), // a lone number
             mapOf("type" to CardScheme.Amex, "number" to "000000000000"), // a lone number
-            mapOf(
-                "type" to CardScheme.Diners,
-                "number" to "3056930"
-            ), // only first part of the number
+            mapOf("type" to CardScheme.Diners, "number" to "3056930"), // only first part of the number
             mapOf("type" to CardScheme.Discover, "number" to "1117"), // only last 4 digits
-            mapOf(
-                "type" to CardScheme.MasterCard,
-                "number" to "2721001234567890"
-            ), // Not assigned yet
-            mapOf(
-                "type" to CardScheme.MasterCard,
-                "number" to "2220991234567890"
-            ), // Not assigned yet
+            mapOf("type" to CardScheme.MasterCard, "number" to "2721001234567890"), // Not assigned yet
+            mapOf("type" to CardScheme.MasterCard, "number" to "2220991234567890"), // Not assigned yet
             mapOf("type" to CardScheme.Uatp, "number" to "11016530969617"), // invalid length
             mapOf("type" to CardScheme.Mir, "number" to "220038142733008"), // invalid length
             mapOf("type" to CardScheme.Mir, "number" to "22003814273300821234") // invalid length
