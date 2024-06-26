@@ -1,5 +1,4 @@
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -29,7 +28,6 @@ import tech.devscast.validable.NotEmptyValidable
 import tech.devscast.validable.UrlValidable
 import tech.devscast.validable.core.rememberValidator
 
-@ExperimentalAnimationApi
 @Composable
 fun App() {
 
