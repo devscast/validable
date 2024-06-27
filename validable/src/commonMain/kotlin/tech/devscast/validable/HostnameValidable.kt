@@ -1,6 +1,6 @@
 package tech.devscast.validable
 
-import java.util.regex.Pattern
+import tech.devscast.validable.util.matches
 
 private const val HOSTNAME_PATTERN =
     "^(?!-)(?!.*\\d+\\.\\d+\\.\\d+\\.\\d+)(?!.*\\.example\$)(?!.*\\.invalid\$)(?!.*\\.localhost\$)(?!.*\\.test\$)[A-Za-z0-9-]{1,63}(?<!-)(\\.[A-Za-z0-9-]{1,63})*\$"
@@ -17,6 +17,6 @@ private const val HOSTNAME_PATTERN =
  * @see [IpValidable]
  */
 class HostnameValidable(message: String? = null) : BaseValidable(
-    validator = { value -> Pattern.matches(HOSTNAME_PATTERN, value) },
+    validator = { value -> matches(HOSTNAME_PATTERN, value) },
     errorFor = { value -> message ?: "$value is not a valid hostname" }
 )

@@ -1,7 +1,6 @@
 package tech.devscast.validable
 
-import java.net.MalformedURLException
-import java.net.URL
+import tech.devscast.validable.util.validateUrl
 
 /**
  * Validates that a value is a valid URL string.
@@ -12,13 +11,6 @@ import java.net.URL
  * @see HostnameValidable
  */
 class UrlValidable(message: String? = null) : BaseValidable(
-    validator = { value ->
-        try {
-            URL(value)
-            true
-        } catch (e: MalformedURLException) {
-            false
-        }
-    },
+    validator = { value -> validateUrl(value) },
     errorFor = { _ -> message ?: "This value is not a valid URL." }
 )

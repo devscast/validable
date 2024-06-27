@@ -12,6 +12,7 @@ compose-material3 = "1.2.1"
 androidx-activityCompose = "1.9.0"
 detekt = "1.23.6"
 binary-compatibilty-validator = "0.14.0"
+kotlinTestWasmJs = "2.0.0"
 lifecycleRuntimeKtx = "2.8.2"
 material = "1.12.0"
 maven-publish = "0.28.0"
@@ -38,6 +39,7 @@ compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = 
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
+kotlin-test-wasm-js = { module = "org.jetbrains.kotlin:kotlin-test-wasm-js", version.ref = "kotlinTestWasmJs" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 
 [plugins]

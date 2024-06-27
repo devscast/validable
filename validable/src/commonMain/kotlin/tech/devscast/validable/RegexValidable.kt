@@ -1,6 +1,6 @@
 package tech.devscast.validable
 
-import java.util.regex.Pattern
+import tech.devscast.validable.util.matches
 
 /**
  * Validates that a value matches a regular expression.
@@ -11,6 +11,6 @@ import java.util.regex.Pattern
  * (Optional) Custom error message for validation failure.
  */
 class RegexValidable(pattern: String, message: String? = null) : BaseValidable(
-    validator = { value -> Pattern.matches(pattern, value) },
+    validator = { value -> matches(pattern, value) },
     errorFor = { _ -> message ?: "This value is not a valid regex." }
 )

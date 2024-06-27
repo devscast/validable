@@ -1,6 +1,6 @@
 package tech.devscast.validable
 
-import java.util.regex.Pattern
+import tech.devscast.validable.util.matches
 
 /**
  * Validates that a card number belongs to a specified scheme.
@@ -11,10 +11,7 @@ import java.util.regex.Pattern
  * (Optional) Custom error message for validation failure.
  */
 class CardSchemeValidable(scheme: CardScheme, message: String? = null) : BaseValidable(
-    validator = { value ->
-        val compiledPatterns = scheme.patterns.map { Pattern.compile(it) }
-        compiledPatterns.any { pattern -> pattern.matcher(value).matches() }
-    },
+    validator = { value -> matches(patterns = scheme.patterns, input = value) },
     errorFor = { _ -> message ?: "Unsupported card type or invalid card number." }
 )
 
