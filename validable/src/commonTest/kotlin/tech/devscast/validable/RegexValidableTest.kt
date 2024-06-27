@@ -1,28 +1,29 @@
 package tech.devscast.validable
 
-import org.junit.Assert
-import org.junit.Before
-import org.junit.Test
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class RegexValidableTest {
 
     lateinit var validable: RegexValidable
 
-    @Before
+    @BeforeTest
     fun setUp() {
         validable = RegexValidable("^[0-9]+$")
         validable.enableShowErrors()
     }
 
     @Test
-    fun `should match`() {
+    fun shouldMatch() {
         validable.value = "897"
-        Assert.assertFalse(validable.hasError())
+        assertFalse(validable.hasError())
     }
 
     @Test
-    fun `should not match`() {
+    fun shouldNotMatch() {
         validable.value = "kalume"
-        Assert.assertTrue(validable.hasError())
+        assertTrue(validable.hasError())
     }
 }

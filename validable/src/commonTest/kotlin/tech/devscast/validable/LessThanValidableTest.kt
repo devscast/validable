@@ -1,50 +1,51 @@
 package tech.devscast.validable
 
-import org.junit.Assert
-import org.junit.Before
-import org.junit.Test
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class LessThanValidableTest {
 
     lateinit var validable: LessThanValidable
 
-    @Before
+    @BeforeTest
     fun setUp() {
         validable = LessThanValidable(100)
         validable.enableShowErrors()
     }
 
     @Test
-    fun `malformed string number has error`() {
+    fun malformedStringNumberHasError() {
         validable.value = "hello"
-        Assert.assertTrue(validable.hasError())
+        assertTrue(validable.hasError())
 
         validable.value = "#9"
-        Assert.assertTrue(validable.hasError())
+        assertTrue(validable.hasError())
 
         validable.value = "4-5"
-        Assert.assertTrue(validable.errorMessage != null)
+        assertTrue(validable.errorMessage != null)
     }
 
     @Test
-    fun `bigger value has error`() {
+    fun biggerValueHasError() {
         validable.value = "150"
-        Assert.assertTrue(validable.hasError())
+        assertTrue(validable.hasError())
     }
 
     @Test
-    fun `limit value has error`() {
+    fun limitValueHasError() {
         validable.value = "100"
-        Assert.assertTrue(validable.hasError())
-        Assert.assertTrue(validable.errorMessage != null)
+        assertTrue(validable.hasError())
+        assertTrue(validable.errorMessage != null)
     }
 
     @Test
-    fun `lower than limit value is valid`() {
+    fun lowerThanLimitValueIsValid() {
         validable.value = "99"
-        Assert.assertFalse(validable.hasError())
+        assertFalse(validable.hasError())
 
         validable.value = "10"
-        Assert.assertFalse(validable.hasError())
+        assertFalse(validable.hasError())
     }
 }

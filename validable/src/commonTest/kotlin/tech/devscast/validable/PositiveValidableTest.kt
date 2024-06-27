@@ -1,43 +1,44 @@
 package tech.devscast.validable
 
-import org.junit.Assert
-import org.junit.Before
-import org.junit.Test
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class PositiveValidableTest {
 
     lateinit var validable: PositiveValidable
 
-    @Before
+    @BeforeTest
     fun setUp() {
         validable = PositiveValidable()
         validable.enableShowErrors()
     }
 
     @Test
-    fun `zero is neither positive nor negative`() {
+    fun zeroIsNeitherPositiveNorNegative() {
         validable.value = "0"
-        Assert.assertTrue(validable.hasError())
+        assertTrue(validable.hasError())
     }
 
     @Test
-    fun `negative or malformed string number has error`() {
+    fun negativeOrMalformedStringNumberHasError() {
         validable.value = ""
-        Assert.assertTrue(validable.hasError())
+        assertTrue(validable.hasError())
 
         validable.value = "-9"
-        Assert.assertTrue(validable.hasError())
+        assertTrue(validable.hasError())
 
         validable.value = "4-5"
-        Assert.assertTrue(validable.errorMessage != null)
+        assertTrue(validable.errorMessage != null)
     }
 
     @Test
-    fun `positive number is valid`() {
+    fun positiveNumberIsValid() {
         validable.value = "23"
-        Assert.assertFalse(validable.hasError())
+        assertFalse(validable.hasError())
 
         validable.value = "24.3"
-        Assert.assertFalse(validable.hasError())
+        assertFalse(validable.hasError())
     }
 }

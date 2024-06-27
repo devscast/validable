@@ -1,32 +1,32 @@
 package tech.devscast.validable
 
-import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.Test
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertTrue
 
 class NotBlankValidableTest {
     lateinit var validable: NotBlankValidable
 
-    @Before
+    @BeforeTest
     fun setUp() {
         validable = NotBlankValidable()
         validable.enableShowErrors()
     }
 
     @Test
-    fun `empty or blank text has error`() {
+    fun emptyOrBlankTextHasError() {
         validable.value = ""
-        assertTrue("empty or blank text has error", validable.hasError())
+        assertTrue(validable.hasError(),"empty or blank text has error")
 
         validable.value = "  "
-        assertTrue("blank text has error", validable.hasError())
+        assertTrue(validable.hasError(),"blank text has error")
         assertTrue(validable.errorMessage != null)
     }
 
     @Test
-    fun `not blank text is valid`() {
+    fun notBlankTextIsValid() {
         validable.value = "Hello world"
-        assertTrue("Not blank text is valid", validable.isValid)
-        assertTrue("Not blank text does not have error", validable.errorMessage == null)
+        assertTrue(validable.isValid,"Not blank text is valid")
+        assertTrue(validable.errorMessage == null,"Not blank text does not have error")
     }
 }

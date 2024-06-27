@@ -1,21 +1,21 @@
 package tech.devscast.validable
 
-import org.junit.Assert
-import org.junit.Before
-import org.junit.Test
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class HostnameValidableTest {
 
     lateinit var validable: HostnameValidable
 
-    @Before
+    @BeforeTest
     fun setUp() {
         validable = HostnameValidable()
         validable.enableShowErrors()
     }
 
     @Test
-    fun `should only returns valid hostnames`() {
+    fun shouldOnlyReturnsValidHostnames() {
         val hostnames = mutableListOf<String>()
         hostnames.addAll(
             getHostnames().filter { hostname ->
@@ -24,7 +24,7 @@ class HostnameValidableTest {
             }
         )
 
-        Assert.assertEquals(getValidHostnames(), hostnames)
+        assertEquals(getValidHostnames(), hostnames)
     }
 
     private fun getValidHostnames(): List<String> {

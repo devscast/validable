@@ -1,32 +1,33 @@
 package tech.devscast.validable
 
-import org.junit.Assert
-import org.junit.Before
-import org.junit.Test
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class EqualToValidableTest {
 
     lateinit var validable: EqualToValidable
 
-    @Before
+    @BeforeTest
     fun setUp() {
         validable = EqualToValidable("someString")
         validable.enableShowErrors()
     }
 
     @Test
-    fun `exact string is valid`() {
+    fun exactStringIsValid() {
         validable.value = "someString"
-        Assert.assertFalse(validable.hasError())
-        Assert.assertFalse(validable.errorMessage != null)
+        assertFalse(validable.hasError())
+        assertFalse(validable.errorMessage != null)
     }
 
     @Test
-    fun `different string has error`() {
+    fun differentStringHasError() {
         validable.value = "otherString"
-        Assert.assertTrue(validable.hasError())
+        assertTrue(validable.hasError())
 
         validable.value = "440"
-        Assert.assertTrue(validable.hasError())
+        assertTrue(validable.hasError())
     }
 }

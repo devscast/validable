@@ -1,32 +1,33 @@
 package tech.devscast.validable
 
-import org.junit.Assert
-import org.junit.Before
-import org.junit.Test
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class IpValidableTest {
 
     lateinit var validable: IpValidable
 
-    @Before
+    @BeforeTest
     fun setUp() {
         validable = IpValidable()
         validable.enableShowErrors()
     }
 
     @Test
-    fun `valid ip v4 are valid`() {
+    fun validIpV4AreValid() {
         getValidIPv4().forEach {
             validable.value = it
-            Assert.assertFalse(validable.hasError())
+            assertFalse(validable.hasError())
         }
     }
 
     @Test
-    fun `invalid ip v4 have error`() {
+    fun invalidIpV4HaveError() {
         getInvalidIPv4().forEach {
             validable.value = it
-            Assert.assertTrue(validable.hasError())
+            assertTrue(validable.hasError())
         }
     }
 

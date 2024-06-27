@@ -1,15 +1,16 @@
 package tech.devscast.validable.core
 
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
-import org.junit.Test
+
 import tech.devscast.validable.EmailValidable
 import tech.devscast.validable.EqualToValidable
+import kotlin.test.Test
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class ValidatorTest {
 
     @Test
-    fun `test validator when input are not valid`() {
+    fun testValidatorWhenInputAreNotValid() {
         val validable1 = EmailValidable()
         validable1.value = "example"
         val validable2 = EqualToValidable("Hello world")
@@ -19,12 +20,12 @@ class ValidatorTest {
         validator.validate {
             isValid = true
         }
-        assertFalse("Should be false", isValid)
+        assertFalse(isValid,"Should be false")
     }
 
     @Test
 
-    fun `test validator when input are valid`() {
+    fun testValidatorWhenInputAreValid() {
         val validable1 = EmailValidable()
         validable1.value = "example@gmail.com"
         val validable2 = EqualToValidable("Hello world")
@@ -34,6 +35,6 @@ class ValidatorTest {
         validator.validate {
             isValid = true
         }
-        assertTrue("Should be true", isValid)
+        assertTrue(isValid,"Should be true")
     }
 }

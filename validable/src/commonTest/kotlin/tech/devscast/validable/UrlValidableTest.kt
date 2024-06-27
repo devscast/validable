@@ -1,48 +1,49 @@
 package tech.devscast.validable
 
-import org.junit.Assert
-import org.junit.Before
-import org.junit.Test
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class UrlValidableTest {
 
     lateinit var validable: UrlValidable
 
-    @Before
+    @BeforeTest
     fun setUp() {
         validable = UrlValidable()
         validable.enableShowErrors()
     }
 
     @Test
-    fun `invalid relative urls have errors`() {
+    fun invalidRelativeUrlsHaveErrors() {
         getInvalidRelativeUrls().forEach {
             validable.value = it
-            Assert.assertTrue(validable.errorMessage, validable.hasError())
+            assertTrue(validable.hasError(), validable.errorMessage)
         }
     }
 
     @Test
-    fun `invalid urls has errors`() {
+    fun invalidUrlsHasErrors() {
         getInvalidUrls().forEach {
             validable.value = it
-            Assert.assertTrue(validable.errorMessage, validable.hasError())
+            assertTrue(validable.hasError(), validable.errorMessage)
         }
     }
 
     @Test
-    fun `valid urls are valid`() {
+    fun validUrlsAreValid() {
         getValidUrls().forEach {
             validable.value = it
-            Assert.assertFalse(validable.errorMessage, validable.hasError())
+            assertFalse(validable.hasError(), validable.errorMessage)
         }
     }
 
     @Test
-    fun `custom valid urls are valid`() {
+    fun customValidUrlsAreValid() {
         getValidCustomUrls().forEach {
             validable.value = it
-            Assert.assertFalse(validable.errorMessage, validable.hasError())
+            assertFalse(validable.hasError(), validable.errorMessage)
         }
     }
 

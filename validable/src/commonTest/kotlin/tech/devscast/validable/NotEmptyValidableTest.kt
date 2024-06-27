@@ -1,39 +1,40 @@
 package tech.devscast.validable
 
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.Test
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
+
 
 class NotEmptyValidableTest {
 
     lateinit var validable: NotEmptyValidable
 
-    @Before
+    @BeforeTest
     fun setUp() {
         validable = NotEmptyValidable()
         validable.enableShowErrors()
     }
 
     @Test
-    fun `empty text has error`() {
+    fun emptyTextHasError() {
         validable.value = ""
-        assertTrue("Empty string must have error", validable.hasError())
-        assertTrue("Empty string must have error message", validable.errorMessage != null)
-        assertFalse("Empty string must not be valid", validable.isValid)
+        assertTrue(validable.hasError(), "Empty string must have error")
+        assertTrue(validable.errorMessage != null, "Empty string must have error message")
+        assertFalse(validable.isValid, "Empty string must not be valid")
     }
 
     @Test
-    fun `blank string is valid`() {
+    fun blankStringIsValid() {
         validable.value = "  "
-        assertTrue("Blank string must be valid", validable.isValid)
-        assertFalse("Blank string must not have error", validable.hasError())
+        assertTrue(validable.isValid, "Blank string must be valid")
+        assertFalse(validable.hasError(), "Blank string must not have error")
     }
 
     @Test
-    fun `not empty text is valid`() {
+    fun notEmptyTextIsValid() {
         validable.value = "Hello world"
-        assertTrue("Not empty string must be valid",validable.isValid)
-        assertTrue("Not empty string must not have error",validable.errorMessage == null)
+        assertTrue(validable.isValid, "Not empty string must be valid")
+        assertTrue(validable.errorMessage == null, "Not empty string must not have error")
     }
 }
