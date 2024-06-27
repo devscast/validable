@@ -1,5 +1,6 @@
 package tech.devscast.validable
 
+import tech.devscast.validable.util.ExperimentalValidableApi
 import tech.devscast.validable.util.validateUrl
 
 /**
@@ -10,6 +11,7 @@ import tech.devscast.validable.util.validateUrl
  *
  * @see HostnameValidable
  */
+@ExperimentalValidableApi
 class UrlValidable(message: String? = null) : BaseValidable(
     validator = { value -> validateUrl(value) },
     errorFor = { _ -> message ?: "This value is not a valid URL." }
