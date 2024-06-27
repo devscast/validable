@@ -253,3 +253,6 @@ public final class tech/devscast/validable/core/ValidatorKt {
 	public static final fun rememberValidator ([Ltech/devscast/validable/BaseValidable;Landroidx/compose/runtime/Composer;I)Ltech/devscast/validable/core/Validator;
 }
 
+public abstract interface annotation class tech/devscast/validable/util/ExperimentalValidableApi : java/lang/annotation/Annotation {
+}
+

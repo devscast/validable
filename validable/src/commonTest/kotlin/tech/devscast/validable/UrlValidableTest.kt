@@ -1,10 +1,12 @@
 package tech.devscast.validable
 
+import tech.devscast.validable.util.ExperimentalValidableApi
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
+@OptIn(ExperimentalValidableApi::class)
 class UrlValidableTest {
 
     lateinit var validable: UrlValidable
