@@ -37,6 +37,12 @@ kotlin {
         binaries.executable()
     }
 
+    js {
+        moduleName = "sample"
+        browser()
+        binaries.executable()
+    }
+
     sourceSets {
         val desktopMain by getting
 
