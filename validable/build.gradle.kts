@@ -1,5 +1,6 @@
 import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
 plugins {
     alias(libs.plugins.androidLibrary)
@@ -22,6 +23,11 @@ kotlin {
     }
     jvm()
 
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        browser()
+    }
+
     sourceSets {
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -29,7 +35,7 @@ kotlin {
         }
 
         commonTest.dependencies {
-            implementation(kotlin("test-junit"))
+            implementation(kotlin("test"))
         }
     }
 }
