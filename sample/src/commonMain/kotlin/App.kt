@@ -31,11 +31,9 @@ import tech.devscast.validable.CardSchemeValidable
 import tech.devscast.validable.EmailValidable
 import tech.devscast.validable.GreaterThanValidable
 import tech.devscast.validable.NotEmptyValidable
-import tech.devscast.validable.UrlValidable
 import tech.devscast.validable.core.rememberValidator
 import tech.devscast.validable.util.ExperimentalValidableApi
 
-@OptIn(ExperimentalValidableApi::class)
 @Composable
 fun App() {
     val emailField = remember { EmailValidable() }
@@ -43,13 +41,11 @@ fun App() {
 
     val cardField = remember { CardSchemeValidable(CardScheme.MasterCard) }
 
-    val urlField = remember { UrlValidable() }
-
     val ageTextField = remember {
         GreaterThanValidable(18, "Age must be greater than 18")
     }
 
-    val validator = rememberValidator(emailField, nameField, cardField, urlField, ageTextField)
+    val validator = rememberValidator(emailField, nameField, cardField, ageTextField)
 
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
@@ -109,26 +105,6 @@ fun App() {
 
             AnimatedVisibility(visible = cardField.hasError()) {
                 TextFieldError(textError = cardField.errorMessage ?: "")
-            }
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            OutlinedTextField(
-                shape = RoundedCornerShape(20.dp),
-                label = {
-                    Text(
-                        text = "Your website",
-                        style = MaterialTheme.typography.labelLarge
-                    )
-                },
-                value = urlField.value,
-                onValueChange = { urlField.value = it },
-                isError = urlField.hasError(),
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            AnimatedVisibility(visible = urlField.hasError()) {
-                TextFieldError(textError = urlField.errorMessage ?: "")
             }
 
             Spacer(modifier = Modifier.height(16.dp))
