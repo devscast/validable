@@ -32,7 +32,6 @@ import tech.devscast.validable.EmailValidable
 import tech.devscast.validable.GreaterThanValidable
 import tech.devscast.validable.NotEmptyValidable
 import tech.devscast.validable.core.rememberValidator
-import tech.devscast.validable.util.ExperimentalValidableApi
 
 @Composable
 fun App() {
