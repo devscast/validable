@@ -82,6 +82,5 @@ nav:
       - validables/positive_or_zero.md
       - validables/range.md
       - validables/regex.md
-      - validables/url.md
 
   - 'Code of conduct': coc.md
