@@ -94,7 +94,7 @@ mavenPublishing {
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
     signAllPublications()
 
-    coordinates("tech.devscast", "validable", "2.0.0-alpha01")
+    coordinates("tech.devscast", "validable", "2.0.0-alpha02")
 
     pom {
         name.set("Validable")
