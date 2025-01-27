@@ -46,10 +46,10 @@ kotlin {
 }
 
 android {
-    compileSdk = 34
+    compileSdk = 35
 
     lint {
-        targetSdk = 34
+        targetSdk = 35
     }
 
     defaultConfig {
