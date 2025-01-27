@@ -3,8 +3,8 @@
 ![Maven Central Version](https://img.shields.io/maven-central/v/tech.devscast/validable?color=blue)
 [![build](https://github.com/devscast/validable/actions/workflows/build.yaml/badge.svg)](https://github.com/devscast/validable/actions/workflows/build.yaml)
 
-Validable is an extensible library that simplifies text field validation for Jetpack Compose and
-Compose Multiplatform by providing abstraction and reusable validation logic.
+Validable is a multiplatform extensible library that simplifies text field validation for
+Jetpack Compose by providing abstraction and reusable validation logic.
 
 This is what it looks like :
 
