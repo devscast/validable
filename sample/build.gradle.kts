@@ -59,7 +59,7 @@ kotlin {
 
 android {
     namespace = "tech.devscast.validable_sample"
-    compileSdk = 34
+    compileSdk = 35
 
 //    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
 //    sourceSets["main"].res.srcDirs("src/androidMain/res")
@@ -68,7 +68,7 @@ android {
     defaultConfig {
         applicationId = "tech.devscast.validable_sample"
         minSdk = 21
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
     }
